@@ -9,6 +9,11 @@ const postUsers = async(user) => {
                 'Content-Type' : 'application/json; charset=UTF-8'
             }
         });
+        Swal.fire(
+            'Usuario registrado',
+            'You clicked the button!',
+            'success',
+          )
     } catch (error) {
         
     }
