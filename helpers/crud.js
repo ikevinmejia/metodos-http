@@ -19,18 +19,29 @@ const postUsers = async(user) => {
     }
 }
 
-const deletUser = async(url) => {
-    try {
-        await fetch(url, {
-            method: "DELETE"
-        })
+const deletUser = (url) => {
         Swal.fire({
-            icon: 'error',
-            title: 'Cuenta eliminada',
-          })
-    } catch (error) {
-        throw error
-    }
+            title: "¿Seguro deseas eliminar este usuario?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: 'Sí, elimnar',
+        }).then( async (result) =>{
+            if (result.isConfirmed){
+
+                try {
+                    await fetch(url, {
+                        method: "DELETE"
+                    });
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Cuenta eliminada',
+                      })
+
+                } catch (error){
+                    throw error;
+                }
+            }
+        })
 }
 
 export {
