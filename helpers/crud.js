@@ -15,10 +15,25 @@ const postUsers = async(user) => {
             'success',
           )
     } catch (error) {
-        
+        throw error
+    }
+}
+
+const deletUser = async(url) => {
+    try {
+        await fetch(url, {
+            method: "DELETE"
+        })
+        Swal.fire({
+            icon: 'error',
+            title: 'Cuenta eliminada',
+          })
+    } catch (error) {
+        throw error
     }
 }
 
 export {
-    postUsers
+    postUsers,
+    deletUser
 }

@@ -1,8 +1,9 @@
-import { postUsers } from "../helpers/crud.js";
+import { deletUser, postUsers } from "../helpers/crud.js";
 import getData from "../helpers/getData.js";
 
 const form = document.querySelector('#formulario');
 const btnCorreo = document.querySelector('#btnCorreo');
+const btnEliminar = document.querySelector('#btnEliminar');
 
 const nombre = document.querySelector('#name');
 const apellido = document.querySelector('#lastName');
@@ -20,7 +21,6 @@ form.addEventListener('submit', (e) => {
     postUsers( user );
 });
 
-
 btnCorreo.addEventListener('click', async() => {
     const input = document.querySelector('#email').value;
     const data = await getData('http://localhost:3000/usuarios');
@@ -32,14 +32,21 @@ btnCorreo.addEventListener('click', async() => {
         correo.value = email;
         id.value = idUser;
 
+        btnEliminar.disabled = false;
+
     } else {
         Swal.fire(
-            'Usuario registrado',
-            'You clicked the button!',
+            'Usuario Encontrado',
             'success',
           )
     }
 
 
     console.log(user);
-})
+});
+
+btnEliminar.addEventListener('click', () => {
+
+    deletUser(`http://localhost:3000/usuarios/${id.value}`);
+    console.log(id.value)
+});
