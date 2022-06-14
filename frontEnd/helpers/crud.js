@@ -1,4 +1,4 @@
-const url = 'http://localhost:3000/usuarios';
+const url = 'https://mascotas-geek-ikevinmejia.herokuapp.com/usuarios';
 
 const postUsers = async(user) => {
     try {
@@ -44,8 +44,29 @@ const deletUser = (url) => {
         })
 }
 
+const putUser = async(url, info) => {
+    try {
+        await fetch(url, {
+            method: 'PUT',
+            body: JSON.stringify(info),
+            headers: {
+                'Content-Type' : 'application/json; charset=UTF-8'
+            }
+        });
+        Swal.fire(
+            'Usuario Actualizado',
+            'You clicked the button!',
+            'success',
+          )
+
+    } catch (error) {
+        
+    }
+}
+
 export {
     postUsers,
-    deletUser
+    deletUser,
+    putUser
 }
 

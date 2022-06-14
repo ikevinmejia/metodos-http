@@ -5,7 +5,7 @@ const container = document.querySelector('#container');
 const btnP = document.querySelector('#btnP');
 const btnG = document.querySelector('#btnG');
 const tPets = document.querySelector('#petsCard').content;
-const url = 'http://localhost:3000/';
+const url = 'https://mascotas-geek-ikevinmejia.herokuapp.com/';
 
 const limpiar = document.querySelector('#lmp');
 
